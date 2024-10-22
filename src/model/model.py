@@ -1,7 +1,7 @@
 from navec import Navec
-# from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-from annoy import AnnoyIndex
+
+# https://github.com/natasha/navec
 
 path = 'navec_hudlit_v1_12B_500K_300d_100q.tar'
 navec = Navec.load(path)
@@ -16,4 +16,4 @@ def get_text_embedding(text):
     return np.mean(words_embeddings, axis=0)
   else:
     # Возвращаем нулевой вектор, если нет известных слов
-    return np.zeros(embedding_dim)
+    return np.zeros(300)

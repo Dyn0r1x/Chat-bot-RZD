@@ -1,16 +1,10 @@
-version: "3.8"
 services:
-  postgres:
-    image: postgres:latest
-    container_name: postgres_db
-    environment:
-      POSTGRES_USER: testuser
-      POSTGRES_PASSWORD: testpassword
-      POSTGRES_DB: testdb
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
     ports:
-      - "5432:5432"
+      - "6333:6333" # REST API и Web UI
+      - "6334:6334" # GRPC API
     volumes:
-      - pg_data:/var/lib/postgresql/data
-
-volumes:
-  pg_data:
+      - ./qdrant_storage:/qdrant/storage # Хранение данных на хосте
+    restart: unless-stopped
