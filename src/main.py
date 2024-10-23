@@ -94,10 +94,13 @@ async def question(message: Message):
 
   # TODO: суммаризатор
   
-  for result in search_result.points:
-    print(result.payload['text'])
+  # for result in search_result.points:
+    # print(result.payload['text'])
   
+  result = ''
   texts = [point.payload['text'] for point in search_result.points]
+  for i in range(0, len(texts)):
+    result += texts[i]
   
   # Возвращаем ответ в формате JSON
-  return texts
+  return result

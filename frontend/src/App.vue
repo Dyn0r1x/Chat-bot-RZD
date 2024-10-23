@@ -8,7 +8,7 @@
         :class="message.role"
       >
         <p>{{ message.role === "user" ? "Вы" : "Сервер" }}:</p>
-        {{ message.text }}
+        <p class="text">{{ message.text }}</p>
       </div>
     </div>
 
@@ -52,7 +52,7 @@ const sendMessage = async () => {
       const data = await res.json();
 
       // Добавляем ответ сервера в список чата
-      chatMessages.value.push({ role: "bot", text: data.response });
+      chatMessages.value.push({ role: "bot", text: data });
 
       question.value = "";
     } catch (error) {
@@ -74,5 +74,11 @@ const sendMessage = async () => {
   padding: 20%;
   background-color: #495a6e;
   border-radius: 10px;
+}
+p {
+  color: white;
+}
+.text {
+  color: rgb(144, 214, 191);
 }
 </style>
